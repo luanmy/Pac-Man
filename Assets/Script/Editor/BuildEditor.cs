@@ -30,13 +30,12 @@ public class BuildScript
 
     private static void BuildWithStrippingLevel(BuildTarget target, BuildTargetGroup targetGroup, string buildPath, ManagedStrippingLevel strippingLevel)
     {
-        BuildOptions options = BuildOptions.None;
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
         {
             scenes = new[] { "Assets/Scenes/SampleScene.unity" },
             locationPathName = $"{buildPath}_{strippingLevel}",
             target = target,
-            options = options
+            options = BuildOptions.None
         };
         var namedBuildTarget = NamedBuildTarget.FromBuildTargetGroup(targetGroup);
         PlayerSettings.SetManagedStrippingLevel(namedBuildTarget, strippingLevel);
